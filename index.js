@@ -16,4 +16,4 @@ app.listen(port, () => {
 app.use(cors());
 const UserRouter = require("./api/user");
 
-app.use("/users", UserRouter);
+app.use("/user", UserRouter);
