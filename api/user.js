@@ -133,10 +133,12 @@ const sendVerificationEmail = ({ _id, email }, res) => {
               });
             })
             .catch((err) => {
-              res.json({
-                status: "Failed",
-                message: "Error occured sending verification email",
-              });
+              console.log(err);
+              res.send(err);
+              // res.json({
+              //   status: "Failed",
+              //   message: "Error occured sending verification email",
+              // });
             });
         })
         .catch((err) => {
