@@ -19,6 +19,9 @@ const currentUrl = process.env.NODE_ENV ? development : production;
 
 let transporter = nodemailer.createTransport({
   service: "hotmail",
+  host: "smtp-mail.outlook.com",
+  port: 587,
+  secure: false,
   auth: {
     user: process.env.AUTH_EMAIL,
     pass: process.env.AUTH_PASS,
@@ -133,12 +136,10 @@ const sendVerificationEmail = ({ _id, email }, res) => {
               });
             })
             .catch((err) => {
-              console.log(err);
-              res.send(err);
-              // res.json({
-              //   status: "Failed",
-              //   message: "Error occured sending verification email",
-              // });
+              res.json({
+                status: "Failed",
+                message: "Error occured sending verification email",
+              });
             });
         })
         .catch((err) => {
