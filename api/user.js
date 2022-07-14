@@ -10,9 +10,11 @@ const User = require("../models/user");
 const UserVerification = require("../models/user-verification");
 const PasswordReset = require("../models/password-reset");
 
-const development = "http://localhost:3000/";
-const production = "https://full-auth-server-node-jss.herokuapp.com/";
-const currentUrl = process.env.NODE_ENV ? development : production;
+// const development = "http://localhost:3000/";
+// const production = "https://full-auth-server-node-jss.herokuapp.com/";
+// const currentUrl = process.env.NODE_ENV ? development : production;
+
+const currentUrl = "https://full-auth-server-node-jss.herokuapp.com/";
 
 let transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
