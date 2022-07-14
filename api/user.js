@@ -26,13 +26,12 @@ let transporter = nodemailer.createTransport({
 });
 
 router.post("/signup", (req, res) => {
-  let { name, email, password, dateOfBirth } = req.body;
+  let { name, email, password } = req.body;
   name = name.trim();
   email = email.trim();
   password = password.trim();
-  dateOfBirth = dateOfBirth.trim();
 
-  if (name == "" || email == "" || password == "" || dateOfBirth == "") {
+  if (name == "" || email == "" || password == "") {
     res.json({
       status: "Failed",
       message: "All fields are required",
@@ -46,11 +45,6 @@ router.post("/signup", (req, res) => {
     res.json({
       status: "Failed",
       message: "Invalid email",
-    });
-  } else if (!new Date(dateOfBirth).getTime()) {
-    res.json({
-      status: "Failed",
-      message: "Invalid date of birth format",
     });
   } else if (password.length < 8) {
     res.json({
@@ -74,7 +68,6 @@ router.post("/signup", (req, res) => {
                 name,
                 email,
                 password: hashedPassword,
-                dateOfBirth,
                 verified: false,
               });
               newUser
