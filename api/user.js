@@ -18,10 +18,10 @@ const currentUrl = process.env.NODE_ENV ? development : production;
 // const currentUrl = "http://localhost:3000/";
 
 let transporter = nodemailer.createTransport({
-  service: "hotmail",
-  host: "smtp-mail.outlook.com",
-  port: 587,
-  secure: false,
+  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.AUTH_EMAIL,
     pass: process.env.AUTH_PASS,
