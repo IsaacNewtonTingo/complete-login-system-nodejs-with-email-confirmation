@@ -12,7 +12,7 @@ const PasswordReset = require("../models/password-reset");
 
 const development = "http://localhost:3000/";
 const production = "https://full-auth-server-node-jss.herokuapp.com/";
-const currentUrl = process.env.NODE_ENV ? production : development;
+const currentUrl = process.env.NODE_ENV ? development : production;
 
 let transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
