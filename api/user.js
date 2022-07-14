@@ -10,6 +10,10 @@ const User = require("../models/user");
 const UserVerification = require("../models/user-verification");
 const PasswordReset = require("../models/password-reset");
 
+const development = "http://localhost:3000/";
+const production = "https://full-auth-server-node-jss.herokuapp.com/";
+const currentUrl = process.env.NODE_ENV ? production : development;
+
 let transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
@@ -104,7 +108,6 @@ router.post("/signup", (req, res) => {
 });
 
 const sendVerificationEmail = ({ _id, email }, res) => {
-  const currentUrl = "http://localhost:3000/";
   const uniqueString = uuidv4() + _id;
   const mailOptions = {
     from: process.env.AUTH_EMAIL,
